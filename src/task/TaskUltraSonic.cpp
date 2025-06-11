@@ -23,7 +23,10 @@ void getValueUltrasonic(void *pvParameters)
         duration = pulseIn(echo,HIGH);  
        
         distance = int(duration/2/29.412);
-
+        if (distance < 0)
+        {
+            distance = 0; // Set to 0 if out of range
+        }
         Serial.print(distance);
         Serial.println("cm");
         publishData("ultrasonic", String(distance));
