@@ -5,12 +5,18 @@ void setup()
 {
   Serial.begin(115200);
   initDHT20();
+  // initMiniFan();
+  // initLedRgb();
+  initLightSensor();
+  InitWiFi();
   initMQTT();
-  initUltrasonic();
+  // initUltrasonic();
+  // initServerWeb();
 }
 
 void loop()
 {
+  // Serial.println("Hello");
   if (!Wifi_reconnect())
   {
     return;

@@ -4,8 +4,8 @@
 #define MQTT_SERVER "io.adafruit.com"
 #define MQTT_PORT 1883
 
-String IO_USERNAME = "Username"; // Replace with your Adafruit IO username
-String IO_KEY = "IO_Key"; // Replace with your Adafruit IO key
+String IO_USERNAME = "SIHOANG184"; // Replace with your Adafruit IO username
+String IO_KEY = "aio_jJfZ63z8akywoAqm3uPSUibs5l3f"; // Replace with your Adafruit IO key
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -49,6 +49,7 @@ void InitMQTT()
         String data = "hello";
         publishData("feed_100", data);
         Serial.println("Start");
+        publishData("Wifi_ip",WiFi.localIP().toString());
     }
     else
     {
