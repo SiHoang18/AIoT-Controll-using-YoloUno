@@ -1,17 +1,26 @@
 
 #include "globals.h"
+#define MY_SCL 11
+#define MY_SDA 12
 
 void setup()
 {
   Serial.begin(115200);
-  initDHT20();
-  // initMiniFan();
-  // initLedRgb();
-  initLightSensor();
+  Wire.begin(MY_SCL, MY_SDA);
   InitWiFi();
   initMQTT();
-  // initUltrasonic();
-  // initServerWeb();
+  initServerWeb();
+  initDHT20();
+  initRelay();
+  initMiniFan();
+  initLedRgb();
+  initLed();
+  initLightSensor();
+  initMoistureSensor();
+  initUltrasonic();
+  initTask();
+  initLCD();
+ 
 }
 
 void loop()
@@ -22,9 +31,4 @@ void loop()
     return;
   }
   reconnectMQTT();
-  // getValueDHT20();
-  // // publishData("humidity", String(getHumidityDHT20()));
-  // // delay(1000);
-  // // publishData("tempurature", String(getTemperatureDHT20()));
-  // delay(2000);
 }

@@ -10,13 +10,25 @@
 #include <Arduino.h>
 #include <WebServer.h>
 #include <Adafruit_NeoPixel.h>
+#include <LiquidCrystal_I2C.h>
+#include <ArduinoJson.h>
+#include <AsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+#include <SPIFFS.h>
 ///
 #include "../src/connect/TaskWifi.h"
 #include "../src/connect/TaskMQTT.h"
-#include "../src/task/TaskUltraSonic.h"
+#include "../src/device/TaskUltraSonic.h"
 #include "../src/device/TaskDHT20.h"
-#include "../src/task/ServerWeb.h"
+#include "../src/connect/ServerWeb.h"
 #include "../src/device/LedRgb.h"
+#include "../src/device/Led.h"
+#include "../src/device/Relay.h"
 #include "../src/device/taskMiniFan.h"
 #include "../src/device/LightSensor.h"
+#include "../src/device/LCD.h"
+#include "../src/device/MoistureSensor.h"
+///
+#include "../src/task/FanRelayTask.h"
+
 #endif

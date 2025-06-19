@@ -1,24 +1,18 @@
 #include<../src/device/taskMiniFan.h>
-int flag = false;
+String fanState = "UNACTIVATE";
+int fanOutput = 10;
 void initMiniFan() {
-    pinMode(6, OUTPUT); 
-    digitalWrite(6, LOW); 
+    pinMode(fanOutput, OUTPUT); 
+    digitalWrite(fanOutput, LOW); 
     xTaskCreate(taskMiniFan, "taskMiniFan", 2048, NULL, 1, NULL);
 }
 void taskMiniFan(void *pvParameters) {
     while (true) {
-        if (flag) {
-            digitalWrite(6,HIGH);
-            flag = false;
-            publishData("fan_state", "on");
-            Serial.println("Fan is ON");
-            vTaskDelay(1000 / portTICK_PERIOD_MS); 
-        } else {
-            digitalWrite(6,LOW);
-            flag = true;
-            publishData("fan_state", "off");
-            Serial.println("Fan is OFF");
-            vTaskDelay(5000 / portTICK_PERIOD_MS);
+        if (fanState == "UNACTIVATE") {
+            digitalWrite(fanOutput,LOW);
+        } else if (fanState == "ACTIVATE") {
+            digitalWrite(fanOutput,HIGH);
         }
+        vTaskDelay(200 / portTICK_PERIOD_MS);
     }
 }

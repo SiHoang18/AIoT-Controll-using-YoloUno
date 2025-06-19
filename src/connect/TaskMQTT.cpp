@@ -46,10 +46,10 @@ void InitMQTT()
         client.subscribe((String(IO_USERNAME) + "/feeds/feed_2").c_str());
         client.subscribe((String(IO_USERNAME) + "/feeds/feed_3").c_str());
 
-        String data = "hello";
-        publishData("feed_100", data);
+        // String data = "hello";
+        // publishData("feed_100", data);
         Serial.println("Start");
-        publishData("Wifi_ip",WiFi.localIP().toString());
+        publishData("Wifi",WiFi.localIP().toString());
     }
     else
     {

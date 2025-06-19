@@ -2,7 +2,8 @@
 #define INC_TASKDHT20_H_
 
 #include "globals.h"
-
+extern String humidity;
+extern String temperature;
 extern void initDHT20();
 extern void getValueDHT20(void *pvParameters);
 extern int getTemperatureDHT20();
