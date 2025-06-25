@@ -14,6 +14,7 @@
 #include <ArduinoJson.h>
 #include <AsyncTCP.h>
 #include <ESPAsyncWebServer.h>
+#include <ElegantOTA.h>
 #include <SPIFFS.h>
 ///
 #include "../src/connect/TaskWifi.h"
@@ -30,5 +31,5 @@
 #include "../src/device/MoistureSensor.h"
 ///
 #include "../src/task/FanRelayTask.h"
-
+#include "../src/task/rgbTask.h"
 #endif

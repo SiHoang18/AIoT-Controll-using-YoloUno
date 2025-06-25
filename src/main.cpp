@@ -10,22 +10,22 @@ void setup()
   InitWiFi();
   initMQTT();
   initServerWeb();
-  initDHT20();
-  initRelay();
-  initMiniFan();
+  // initDHT20();
+  // initRelay();
+  // initMiniFan();
   initLedRgb();
   initLed();
-  initLightSensor();
-  initMoistureSensor();
-  initUltrasonic();
-  initTask();
-  initLCD();
+  // initLightSensor();
+  // initMoistureSensor();
+  // initUltrasonic();
+  // initTask();
+  initLedRgbTask();
+  // initLCD();
  
 }
 
 void loop()
 {
-  // Serial.println("Hello");
   if (!Wifi_reconnect())
   {
     return;

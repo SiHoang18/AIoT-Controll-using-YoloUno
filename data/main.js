@@ -7,7 +7,7 @@ const container = document.getElementById('cardContainer');
 const customContainer = document.getElementById('customContainer');
 let selectedColor = 'ffffff';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   cardData.forEach(data => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if(data.state === 'OFF') {
             data.state = 'ON';
             data.mode = 'AUTOMATIC MODE';
+            selectedColor = "#FF0000"
             mode.textContent = data.mode;
             button.textContent = 'SWITCH MODE';
           }else if(data.state === 'ON' && data.mode === 'AUTOMATIC MODE') {
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const sensorCard = document.createElement('div');
   sensorCard.className = 'card';
 
@@ -122,6 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = JSON.parse(event.data);
     console.log("Received data:", data);
     if (data !== null) {
+      cardData.forEach(d, () => {
+        d.mode = d.title == "LED RGB" ? data.ledrgb : data.led;
+        d.state = d.mode == "UNACTIVATE" ? "OFF" : "ON";
+      });
       temperature.innerHTML = `<p><span>Temperature:</span> <span>${data.temperature} °C</span></p>`;
       humidity.innerHTML = `<p><span>Humidity:</span> <span>${data.humidity} %</span></p>`;
       light.innerHTML = `<p><span>Light:</span> <span>${data.light} lx</span></p>`;

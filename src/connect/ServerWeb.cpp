@@ -18,6 +18,8 @@ void sendSensorData(void *pvParameters)
 {
   while(1){
     String json = "{";
+    json += "\"led\": " + ledState + ",";
+    json += "\"ledrgb\": " + ledMode + ",";
     json += "\"temperature\": " + temperature + ",";
     json += "\"humidity\": " + humidity + ",";
     json += "\"distance\": " + distance + ",";
@@ -81,6 +83,7 @@ void initServerWeb()
   server.on("/main.js", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/main.js", "application/javascript");
   });
+  ElegantOTA.begin(&server);
   server.begin();
   Serial.println("Web server started at IP: ");
 
