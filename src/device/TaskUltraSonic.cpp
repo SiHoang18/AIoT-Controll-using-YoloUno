@@ -1,12 +1,11 @@
 #include "TaskUltraSonic.h"
-#define TRIGGER_PIN 18
-#define ECHO_PIN 21
+
 #define DelayTime 3000
 String distance = "0";
 void initUltrasonic()
 {
-    pinMode(TRIGGER_PIN, OUTPUT); 
-    pinMode(ECHO_PIN, INPUT); 
+    pinMode(ULTRASONIC_TRIG_PORT, OUTPUT); 
+    pinMode(ULTRASONIC_ECHO_PORT, INPUT); 
     xTaskCreate(getValueUltrasonic, "getValueUltrasonic", 4096, NULL, 1, NULL);
 }
 void getValueUltrasonic(void *pvParameters){
@@ -15,12 +14,12 @@ void getValueUltrasonic(void *pvParameters){
         unsigned long duration; 
         int dist;           
         
-        digitalWrite(TRIGGER_PIN,0);  
+        digitalWrite(ULTRASONIC_TRIG_PORT,0);  
         delayMicroseconds(2);
-        digitalWrite(TRIGGER_PIN,1);   
+        digitalWrite(ULTRASONIC_TRIG_PORT,1);   
         delayMicroseconds(5);   
-        digitalWrite(TRIGGER_PIN,0);   
-        duration = pulseIn(ECHO_PIN,HIGH);  
+        digitalWrite(ULTRASONIC_TRIG_PORT,0);   
+        duration = pulseIn(ULTRASONIC_ECHO_PORT,HIGH);  
        
         dist = int(duration/2/29.412);
         Serial.print(dist);

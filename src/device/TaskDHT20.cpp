@@ -1,5 +1,5 @@
 #include "TaskDHT20.h"
-#define DelayTime 3000
+#define DelayTime 5000
 DHT20 dht20;
 String humidity = "0";
 String temperature = "0";

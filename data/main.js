@@ -123,9 +123,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const data = JSON.parse(event.data);
     console.log("Received data:", data);
     if (data !== null) {
-      cardData.forEach(d, () => {
+      cardData.forEach(d => {
         d.mode = d.title == "LED RGB" ? data.ledrgb : data.led;
         d.state = d.mode == "UNACTIVATE" ? "OFF" : "ON";
+        if (d._dom && d._dom.mode) d._dom.mode.textContent = d.mode;
+        if (d._dom && d._dom.button) {
+          if (d.state === "OFF") d._dom.button.textContent = "TURN ON";
+          else if (d.mode === "AUTOMATIC MODE") d._dom.button.textContent = "SWITCH MODE";
+          else if (d.mode === "MANUAL MODE") d._dom.button.textContent = "TURN OFF";
+          else if (d.mode === "ACTIVATE") d._dom.button.textContent = "TURN OFF";
+        }
       });
       temperature.innerHTML = `<p><span>Temperature:</span> <span>${data.temperature} °C</span></p>`;
       humidity.innerHTML = `<p><span>Humidity:</span> <span>${data.humidity} %</span></p>`;

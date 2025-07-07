@@ -18,8 +18,8 @@ void sendSensorData(void *pvParameters)
 {
   while(1){
     String json = "{";
-    json += "\"led\": " + ledState + ",";
-    json += "\"ledrgb\": " + ledMode + ",";
+    json += "\"led\": \"" + ledState + "\",";
+    json += "\"ledrgb\": \"" + ledMode + "\",";
     json += "\"temperature\": " + temperature + ",";
     json += "\"humidity\": " + humidity + ",";
     json += "\"distance\": " + distance + ",";
@@ -65,23 +65,23 @@ void initServerWeb()
 {
   Serial.println("Starting web server...");  
 
-  if (!SPIFFS.begin(true)) {
-    Serial.println("SPIFFS Mount Failed");
-    return;
-  }
+  // if (!LittleFS.begin(true)) {
+  //   Serial.println("SPIFFS Mount Failed");
+  //   return;
+  // }
   ws.onEvent(onEvent);
   server.addHandler(&ws);
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/index.html", "text/html");
+    request->send(LittleFS, "/index.html", "text/html");
   });
   server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/styles.css", "text/css");
+    request->send(LittleFS, "/styles.css", "text/css");
   });
   server.on("/server.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/server.js", "application/javascript");
+    request->send(LittleFS, "/server.js", "application/javascript");
   });
   server.on("/main.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/main.js", "application/javascript");
+    request->send(LittleFS, "/main.js", "application/javascript");
   });
   ElegantOTA.begin(&server);
   server.begin();

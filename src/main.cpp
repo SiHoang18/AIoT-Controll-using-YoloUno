@@ -5,30 +5,18 @@
 
 void setup()
 {
+  if(!LittleFS.begin()){
+    Serial.println("Fail to mount LittleFS");
+    return;
+  }
   Serial.begin(115200);
   Wire.begin(MY_SCL, MY_SDA);
-  InitWiFi();
-  initMQTT();
-  initServerWeb();
-  // initDHT20();
-  // initRelay();
-  // initMiniFan();
-  initLedRgb();
-  initLed();
-  // initLightSensor();
-  // initMoistureSensor();
-  // initUltrasonic();
-  // initTask();
-  initLedRgbTask();
-  // initLCD();
- 
+  if(check_config()){
+    init_connect();
+    // init_device();
+  }
 }
 
 void loop()
 {
-  if (!Wifi_reconnect())
-  {
-    return;
-  }
-  reconnectMQTT();
 }

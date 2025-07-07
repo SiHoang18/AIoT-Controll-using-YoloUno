@@ -46,10 +46,10 @@ void InitMQTT()
         client.subscribe((String(IO_USERNAME) + "/feeds/feed_2").c_str());
         client.subscribe((String(IO_USERNAME) + "/feeds/feed_3").c_str());
 
-        // String data = "hello";
-        // publishData("feed_100", data);
+        String data = "hello";
+        publishData("feed_100", data);
         Serial.println("Start");
-        publishData("Wifi",WiFi.localIP().toString());
+        publishData("wifi",WiFi.localIP().toString());
     }
     else
     {
@@ -59,20 +59,26 @@ void InitMQTT()
     }
 }
 
-void reconnectMQTT()
+void reconnectMQTT(void *pvParameter)
 {
-    if (client.connected())
+    while ((1))
     {
-        client.loop();
+        if (client.connected())
+        {
+            client.loop();
+        }
+        else
+        {
+            InitMQTT();
+        }
+        vTaskDelay(MQTT_DELAY_TIME);
     }
-    else
-    {
-        InitMQTT();
-    }
+    
 }
 
 void initMQTT()
 {
     client.setServer(MQTT_SERVER, MQTT_PORT);
     client.setCallback(callback);
+    xTaskCreate(reconnectMQTT,"mqtt_reconnect",4096,NULL,1,NULL);
 }
