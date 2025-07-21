@@ -1,4 +1,5 @@
 #include "../src/device/NeoPixel.h"
+bool state = true;
 Adafruit_NeoPixel neo_pixel(1, NEOPIXEL_PORT, NEO_GRB + NEO_KHZ800);
 void initNeoPixel(){
     neo_pixel.begin();
@@ -7,7 +8,6 @@ void initNeoPixel(){
     xTaskCreate(NeoPixelTask,"Neo_Pixel",4096,NULL,1,NULL);
 }
 void NeoPixelTask(void *pvParameter){
-    bool state = false;
     while (1)
     {
         if (state){
@@ -20,6 +20,6 @@ void NeoPixelTask(void *pvParameter){
             state = true;
 
         }
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(100 / portTICK_PERIOD_MS);
     }
 }

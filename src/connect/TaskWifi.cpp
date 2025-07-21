@@ -21,6 +21,9 @@ void wifi_task(void *pvParameter){
     int attempts = 0;
     while (WiFi.status() != WL_CONNECTED && attempts < 20)
     {
+    #ifdef M5_CORE2
+        M5.update();
+    #endif
         attempts++;
         if (WiFi.status() == WL_CONNECT_FAILED) {
             Serial.println("WiFi connect failed: wrong password or AP not found.");
@@ -37,6 +40,9 @@ void wifi_task(void *pvParameter){
 
     while (true)
     {
+    #ifdef M5_CORE2
+        M5.update();
+    #endif
         if (WiFi.status() != WL_CONNECTED)
         {
             if (!reconnect)

@@ -10,8 +10,23 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-left: 800px;
+}
+.image {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding: 16px;
+    z-index: 10; 
+    background-color: white; 
 }
 
+.image img {
+    max-height: 80vh;
+    max-width: 100%;
+    display: block;
+}
 #config {
     background: #fff;
     padding: 32px 24px;
@@ -20,14 +35,14 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 320px;
+    min-width: 400px;
 }
 
 #config > div {
     width: 100%;
     margin-bottom: 16px;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: flex-start;
 }
 
@@ -58,4 +73,59 @@ body, html {
 
 #config button:hover {
     background: #388e3c;
+}
+.text-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.port-row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 5px 0;
+}
+
+
+.port-label {
+    min-width: 300px;
+    font-weight: 500;
+}
+
+
+.port-select {
+    flex: 1;
+    padding: 5px;
+    font-size: 14px;
+}
+@media (min-width: 1200px) {
+    .image img {
+        max-height: 80vh;
+    }
+}
+
+/* Màn hình từ 900px đến 1199px: ảnh trung bình */
+@media (min-width: 1000px) and (max-width: 1199px) {
+    .image img {
+        max-height: 50vh;
+    }
+    .container {
+        padding-left: 500px;
+    }
+}
+
+@media(max-width: 999px){
+    .image {
+        display: none;
+    }
+
+    .container {
+        justify-content: center;
+        padding: 16px;
+    }
+
+    #config {
+        width: 100%;
+        max-width: 100%;
+    }
 }

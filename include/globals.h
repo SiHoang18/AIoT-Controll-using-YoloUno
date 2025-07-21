@@ -17,15 +17,22 @@
 #include <ElegantOTA.h>
 #include <SPIFFS.h>
 #include <LittleFS.h>
+
+#ifdef M5_CORE2
+#include "M5Core2.h"
+#endif
 ///
+#include "../src/connect/TaskWifi.h"
+#include "../src/connect/ServerWeb.h"
+#include "../src/common/info.h"
+#include "../src/common/configServer.h"
+#include "../src/connect/connect_init.h"
+#include "../src/connect/TaskMQTT.h"
+
 #include "../src/device/define.h"
 #include "../src/device/device.h"
-#include "../src/connect/TaskWifi.h"
-#include "../src/connect/TaskMQTT.h"
-#include "../src/connect/connect_init.h"
 #include "../src/device/TaskUltraSonic.h"
 #include "../src/device/TaskDHT20.h"
-#include "../src/connect/ServerWeb.h"
 #include "../src/device/LedRgb.h"
 #include "../src/device/Led.h"
 #include "../src/device/Relay.h"
@@ -35,8 +42,7 @@
 #include "../src/device/LCD.h"
 #include "../src/device/MoistureSensor.h"
 #include "../src/device/button.h"
-#include "../src/common/info.h"
-#include "../src/common/configServer.h"
+
 
 ///
 #include "../src/task/FanRelayTask.h"
