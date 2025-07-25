@@ -7,4 +7,5 @@ void init_connect(){
     InitWiFi();
     initMQTT();
     initServerWeb();
+    initESPNow();
 }

@@ -84,7 +84,6 @@ void initWiFiACP(){
 
 void task_reset_esp(void *pvParameter) {
     unsigned long buttonPressStart = 0;
-    // pinMode(BOOT,INPUT);
 
     while (true) {
     #ifdef M5_CORE2
@@ -128,12 +127,10 @@ void task_reset_esp(void *pvParameter) {
     }
 }
 void reset_esp(){
-    // pinMode(BOOT,INPUT);
     xTaskCreate(task_reset_esp,"reset_task",4096,NULL,1,NULL);
 }
 
 bool check_config(){
-    // state = false;
     load_config();
     reset_esp();
     if(WIFI_SSID.isEmpty() || WIFI_PASSWORD.isEmpty() || IO_USERNAME.isEmpty() || IO_KEY.isEmpty()){

@@ -1,7 +1,6 @@
 const cardData = [
     { title: 'LED RGB', mode: 'UNACTIVATE', state: 'OFF'},
     { title: 'LED',mode: 'UNACTIVATE', state: 'OFF' },
-    // { title: 'FAN', mode: 'UNACTIVATE', state: 'OFF' },
   ];
 const container = document.getElementById('cardContainer');
 const customContainer = document.getElementById('customContainer');

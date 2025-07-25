@@ -56,6 +56,8 @@ void initConfigServer() {
   serverConfig.on("/main.js", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(LittleFS, "/config/main.js", "application/javascript");
   });
-
+  serverConfig.on("/pics/board.png", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(LittleFS, "/config/pics/board.png", "image/png");
+  });
   serverConfig.begin();
 }

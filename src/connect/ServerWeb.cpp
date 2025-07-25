@@ -72,16 +72,16 @@ void initServerWeb()
   ws.onEvent(onEvent);
   server.addHandler(&ws);
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(LittleFS, "/index.html", "text/html");
+    request->send(LittleFS, "/webserver/index.html", "text/html");
   });
   server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(LittleFS, "/styles.css", "text/css");
+    request->send(LittleFS, "/webserver/styles.css", "text/css");
   });
   server.on("/server.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(LittleFS, "/server.js", "application/javascript");
+    request->send(LittleFS, "/webserver/server.js", "application/javascript");
   });
   server.on("/main.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(LittleFS, "/main.js", "application/javascript");
+    request->send(LittleFS, "/webserver/main.js", "application/javascript");
   });
   ElegantOTA.begin(&server);
   server.begin();

@@ -17,18 +17,20 @@
 #include <ElegantOTA.h>
 #include <SPIFFS.h>
 #include <LittleFS.h>
+#include <esp_now.h>
+#include <esp_wifi.h>
 
 #ifdef M5_CORE2
 #include "M5Core2.h"
 #endif
 ///
-#include "../src/connect/TaskWifi.h"
-#include "../src/connect/ServerWeb.h"
 #include "../src/common/info.h"
 #include "../src/common/configServer.h"
+#include "../src/connect/TaskWifi.h"
+#include "../src/connect/ServerWeb.h"
 #include "../src/connect/connect_init.h"
 #include "../src/connect/TaskMQTT.h"
-
+#include "../src/connect/esp_now_init.h"
 #include "../src/device/define.h"
 #include "../src/device/device.h"
 #include "../src/device/TaskUltraSonic.h"
