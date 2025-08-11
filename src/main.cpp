@@ -1,6 +1,5 @@
 
 #include "globals.h"
-
 void setup()
 {
   Serial.begin(115200);
@@ -17,11 +16,11 @@ void setup()
   }
   if(check_config()){
     init_connect();
-    // init_device();
+    init_device();
   }
 }
 
 void loop()
 {
-
+  
 }

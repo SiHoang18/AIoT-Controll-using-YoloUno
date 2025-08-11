@@ -17,3 +17,11 @@ void ledTask(void *pvParameters) {
         vTaskDelay(200 / portTICK_PERIOD_MS);
     }
 }
+void setLedState(int port,const char* state){
+    // Serial.println(port);
+    if(strcmp(state, "ON")){
+        digitalWrite(port,HIGH);
+    }else if(strcmp(state ,"OFF")){
+        digitalWrite(port,LOW);
+    }
+}

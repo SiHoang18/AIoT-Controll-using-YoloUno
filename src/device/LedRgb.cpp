@@ -9,14 +9,16 @@ void initLedRgb() {
     Pixel.begin(); 
     Pixel.clear(); 
     Pixel.show();
+    // initLedRgbTask();
     xTaskCreate(ledRgbTask, "ledRgbTask", 2048, NULL, 1, NULL); 
+    
 }
 void ledRgbTask(void *pvParameters) {
     while (true){
         if (ledMode == "UNACTIVATE"){
             Pixel.clear();
             Pixel.show();
-            digitalWrite(RGB_PORT, LOW);
+            // digitalWrite(RGB_PORT, LOW);
         }else {
             int r = strtol(colorValue.substring(1, 3).c_str(), NULL, 16);
             int g = strtol(colorValue.substring(3, 5).c_str(), NULL, 16);
@@ -26,7 +28,7 @@ void ledRgbTask(void *pvParameters) {
                 Pixel.setPixelColor(i, Pixel.Color(r, g, b));
             }
             Pixel.show();
-            digitalWrite(RGB_PORT, HIGH);
+            // digitalWrite(RGB_PORT, HIGH);
         }
         vTaskDelay(100 / portTICK_PERIOD_MS);
 

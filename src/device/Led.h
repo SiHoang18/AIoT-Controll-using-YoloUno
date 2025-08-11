@@ -3,5 +3,6 @@
 #include "globals.h"
 extern String ledState;
 extern void initLed();
+extern void setLedState(int port,const char* state);
 void ledTask(void *pvParameters);
 #endif

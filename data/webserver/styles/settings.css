@@ -1,0 +1,69 @@
+.container{
+  justify-items: center;
+  max-width: 100%;
+}
+.setting-box {
+  background: #fff;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 450px;
+}
+
+.port-row, .device-port-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.port-label {
+  flex: 1;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  font-size: 20px;
+}
+
+.port-select, .device-select, .mode-select {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  margin-right: 10px;
+  background-color: #fdfdfd;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.remove-btn {
+    color: red;
+    font-weight: bold;
+}
+.add-device-btn {
+  align-self: flex-start;
+}
+.section-divider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid #6d6c6cbb;
+  margin: 10px 0 0 0;
+}

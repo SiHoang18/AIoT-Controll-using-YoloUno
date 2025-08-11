@@ -72,14 +72,14 @@ function createSaveButton() {
 
         inputs.forEach(({ key, input }) => {
             data[key] = input.value.trim();
-            if (input.value.trim() === "") {
+            if (input.value.trim() === "" && key !== "WiFi Password") {
                 hasEmpty = true;
             }
         });
 
-        portSelectors.forEach(({ key, select }) => {
-            data[key] = select.value;
-        });
+        // portSelectors.forEach(({ key, select }) => {
+        //     data[key] = select.value;
+        // });
 
         if (hasEmpty) {
             alert("Please fill in all text fields.");
@@ -103,7 +103,7 @@ function createSaveButton() {
 function initConfigUI() {
     createTitle();
     createTextInputs();
-    createPortSelectors();
+    // createPortSelectors();
     createSaveButton();
 }
 

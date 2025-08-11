@@ -1,24 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sample HTML Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/cards.css" />
+  <title>AIoT Kit Controller</title>
 </head>
 <body>
-    <div>
-        <div class="header">
-            <nav>Home</nav>
-            <nav>Setting</nav>
-            <!-- <nav>AIoT KiT Controller</nav> -->
+    <div class="container">
+        <div id="header-container" class="app-header"></div>
+
+        <div class="app-home-container">
+        <div class="app-board-container">
+            <div class="app-button-container">
+            <button id="add-board-btn" class="app-btn-primary">Add Board</button>
+            <button id="app-remove-board-btn" class="app-btn-danger">Delete Board</button>
+            <br />
+            <select id="app-board-select">
+                <option disabled selected>Select boards</option>
+            </select>
+
+            <div id="board-modal" class="app-modal hidden">
+                <div class="app-modal-content">
+                <h3>Add New Board</h3>
+                <input type="text" id="board-name" placeholder="Board Name" />
+                <select id="app-board-type" placeholder="Board Type">
+                    <option value="YoloUno">Yolo_uno</option>
+                    <option value="ESP32_4IN4OUT">ESP32_4IN4OUT</option>
+                </select>
+                <input type="text" id="board-mac" placeholder="MAC Address (e.g. A1:B2:C3:D4:E5:F6)" />
+                <div style="margin-top: 10px; gap: 20px;">
+                    <button id="connect-btn">Connect</button>
+                    <button id="close-modal" class="cancel-btn">Cancel</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="app-widgets-container">
+            <button id="add-widget-btn" class="app-widget-add-btn">Add Widget</button>
+            </div>
         </div>
-        <div class="card-container" id="cardContainer"></div>
-        <div class="custom-container" id="customContainer"></div>
-        <div class="footer">&copy; Copyright by SiHoang184</div>
+        </div>
+
+        <div class="content-container"></div>
+        <div id="footer-container" class = "app-footer"></div>
     </div>
-    <script src="server.js"></script>
-    <script src="main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <div id="widget-modal" class="app-modal hidden">
+    <div class="app-modal-content">
+        <h3>Add Widget</h3>
+
+        <input type="text" id="widget-name" placeholder="Widget Name" />
+        <select id="widget-port">
+            <option disabled selected>Select port</option>
+        </select>
+
+        <select id="widget-type">
+        <option value="LED">LED</option>
+        <option value="LED_RGB">RGB LED</option>
+        </select>
+
+        <div style="margin-top: 10px; gap: 20px;display: flex; justify-content: center;">
+            <button id="confirm-add-widget">Add</button>
+            <button id="cancel-add-widget" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+    </div>
+  <script type="module" src="/scripts/server.js"></script>
+  <script type="module" src="/scripts/cards.js"></script>
+  <script type="module" src="/scripts/home.js"></script>
+  <script type="module" src="/scripts/settings.js"></script>
+
+  <script src="/scripts/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </body>
-</html>     
+</html>

@@ -4,7 +4,7 @@ void init_device(){
     // initRelay();
     // initMiniFan();
     // initLedRgb();
-    // initLed();
+    initLed();
     // initLightSensor();
     // initMoistureSensor();
     // initUltrasonic();
